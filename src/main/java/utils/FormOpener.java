@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -57,5 +59,15 @@ public class FormOpener {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    public static void openAlert() {
+
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("BO login failed");
+        alert.setHeaderText("Unable to log into BackOffice, please enter the right credentials!");
+        alert.setContentText(null);
+        alert.showAndWait();
     }
 }

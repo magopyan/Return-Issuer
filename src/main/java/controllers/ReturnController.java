@@ -11,7 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
-import utils.ReturnIssueService;
+import services.ReturnIssueService;
+import utils.FormOpener;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,10 +31,15 @@ public class ReturnController implements Initializable {
         String url = packageUrl.getText(); // HAS TO BE BEFORE detectReason() because the latter calls clearFields and the url-""
         ReturnReason returnReason = detectReason();
         Package returnPackage = new Package(url, returnReason);
-        ReturnIssueService.issueReturn(returnPackage);
+        boolean successfulReturn = ReturnIssueService.issueReturn(returnPackage);
 
-        //FormOpener.openNewFormAndCloseOld("/return.fxml", "Return Issuer", true, event);  // opens on top and that's annoying
-        ((Stage)((Button)event.getSource()).getScene().getWindow()).setIconified(true);
+        if(successfulReturn == true)
+            ((Stage)((Button)event.getSource()).getScene().getWindow()).setIconified(true);
+        else {
+            ((Stage)((Button)event.getSource()).getScene().getWindow()).setIconified(true);
+            FormOpener.openAlert();
+        }
+
     }
 
 

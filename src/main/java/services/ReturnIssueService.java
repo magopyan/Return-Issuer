@@ -1,4 +1,4 @@
-package utils;
+package services;
 
 import backoffice_credentials.BackOfficeUser;
 import backoffice_credentials.Package;
@@ -12,9 +12,10 @@ import org.openqa.selenium.support.ui.Select;
 
 public class ReturnIssueService {
 
+
     private static WebDriver driver;
 
-    static {  // set up ChromeDriver
+    static {  // set up ChromeDriver, executes only once
 
         System.setProperty("webdriver.chrome.driver", "D:\\Return_Issuer\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
@@ -23,16 +24,18 @@ public class ReturnIssueService {
     }
 
 
-    public static void issueReturn(Package returnPackage)  // Main Method combining all the other methods in this class
+    public static boolean issueReturn(Package returnPackage)  // Main Method combining all the other methods in this class
     {
 
         String url = returnPackage.getPackageUrl();
         driver.get(url);
 
         String actualUrl = driver.getCurrentUrl();
-        if(!url.equals(actualUrl)) {
+        if(!url.equals(actualUrl)) { // if we cannot directly reach the package page, it means the user has to log in
             ReturnIssueService.BOLogin();
         }
+        if(actualUrl.equals(driver.getCurrentUrl())) // if the current URL is still the login page
+            return false;
 
         ReturnIssueService.fromPackageGoToEditDriver();
         boolean initiallyOff = ReturnIssueService.switchDriverAutoAccept(AutoAcceptMode.on);
@@ -42,6 +45,7 @@ public class ReturnIssueService {
             ReturnIssueService.fromPackageGoToEditDriver();
             ReturnIssueService.switchDriverAutoAccept(AutoAcceptMode.off);
         };
+        return true;
     }
 
 
