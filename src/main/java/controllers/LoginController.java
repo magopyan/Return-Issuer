@@ -25,8 +25,6 @@ public class LoginController implements Initializable {
     private Label emailErrorLabel;
     @FXML
     private Label passwordErrorLabel;
-    @FXML
-    private Button saveLoginButton;
 
 
 
