@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import org.openqa.selenium.NoSuchElementException;
 import services.ReturnIssueService;
 import utils.FormOpener;
 import utils.FormValidator;
@@ -31,6 +32,7 @@ public class ReturnController implements Initializable {
 
     public void onReturn(ActionEvent event) {
 
+        ((Stage)((Button)event.getSource()).getScene().getWindow()).setIconified(true);
         urlErrorLabel.setText("");
         reasonErrorLabel.setText("");
 
@@ -39,33 +41,35 @@ public class ReturnController implements Initializable {
             ReturnReason returnReason = detectReason();
             Package returnPackage = new Package(url, returnReason);
 
-            boolean successfulReturn = ReturnIssueService.issueReturn(returnPackage);
-
-            if(successfulReturn == true)
-                ((Stage)((Button)event.getSource()).getScene().getWindow()).setIconified(true);
-            else {
-                ((Stage)((Button)event.getSource()).getScene().getWindow()).setIconified(false);
-                FormOpener.openAlert();
+            boolean successfulReturn = false;
+            try {
+                successfulReturn = ReturnIssueService.issueReturn(returnPackage);
+            }
+            catch (NoSuchElementException e) {
+                FormOpener.openAlert("Failed return", "There is no option to return this package!");
             }
         }
     }
 
     private boolean validateFields() {
 
-        boolean urlFormat = FormValidator.urlValidator(packageUrl.getText());
+        String url = packageUrl.getText();
+        boolean urlFormat = FormValidator.urlValidator(url);
         boolean reasonSelected;
         if(returnReasons.getSelectedToggle() == null)
             reasonSelected = false;
         else
             reasonSelected = true;
 
-        if(urlFormat == true && reasonSelected == true)
+        if(urlFormat == true && reasonSelected == true && url.contains("backoffice") == true)
             return true;
-        if(urlFormat == false)
+        if(urlFormat == false || url.contains("backoffice") == false)
             urlErrorLabel.setText("Invalid URL!");
         if(reasonSelected == false)
             reasonErrorLabel.setText("Please select a reason!");
         return false;
+
+
     }
 
     private ReturnReason detectReason() {

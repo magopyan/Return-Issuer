@@ -62,12 +62,15 @@ public class FormOpener {
         stage.close();
     }
 
-    public static void openAlert() {
+    public static void openAlert(String title, String message) {
 
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("BO login failed");
-        alert.setHeaderText("Unable to log into BackOffice, please enter the right credentials!");
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.setAlwaysOnTop(true);
+        alert.setTitle(title);
+        alert.setHeaderText(message);
         alert.setContentText(null);
         alert.showAndWait();
+
     }
 }

@@ -4,11 +4,13 @@ import backoffice_credentials.BackOfficeUser;
 import backoffice_credentials.Package;
 import enums.AutoAcceptMode;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
+import utils.FormOpener;
 
 public class ReturnIssueService {
 
@@ -23,33 +25,32 @@ public class ReturnIssueService {
         driver = new ChromeDriver(options);
     }
 
-
-    public static boolean issueReturn(Package returnPackage)  // Main Method combining all the other methods in this class
+    // Main Method combining all the other methods in this class
+    public static boolean issueReturn(Package returnPackage) throws NoSuchElementException
     {
 
         String url = returnPackage.getPackageUrl();
         driver.get(url);
 
         String actualUrl = driver.getCurrentUrl();
-        if(!url.equals(actualUrl)) { // if we cannot directly reach the package page, it means the user has to log in
-            ReturnIssueService.BOLogin();
-        }
-        if(actualUrl.equals(driver.getCurrentUrl())) // if the current URL is still the login page
-            return false;
+        if(url.equals(actualUrl) == false)  // if we cannot directly reach the package page, we have to log in
+            BOLogin();
+        if(actualUrl.equals(driver.getCurrentUrl())) // if the new URL is still the same login page
+            FormOpener.openAlert("BO login failed", "Unable to log into BackOffice, please edit your login info!");
 
-        ReturnIssueService.fromPackageGoToEditDriver();
-        boolean initiallyOff = ReturnIssueService.switchDriverAutoAccept(AutoAcceptMode.on);
-        ReturnIssueService.createReturnJob(returnPackage.getReturnReason());
+        fromPackageGoToEditDriver();
+        boolean initiallyOff = switchDriverAutoAccept(AutoAcceptMode.on); // if the driver's Auto Accept is Off
+        createReturnJob(returnPackage.getReturnReason());
 
         if(initiallyOff) {
-            ReturnIssueService.fromPackageGoToEditDriver();
-            ReturnIssueService.switchDriverAutoAccept(AutoAcceptMode.off);
+            fromPackageGoToEditDriver();
+            switchDriverAutoAccept(AutoAcceptMode.off);
         };
         return true;
     }
 
 
-    private static void BOLogin() {
+    private static void BOLogin() throws NoSuchElementException {
 
         BackOfficeUser user = BackOfficeUser.getBOUserInstance();
         WebElement emailField = driver.findElement(By.id("admin_user_email"));
@@ -63,7 +64,7 @@ public class ReturnIssueService {
     }
 
 
-    private static void fromPackageGoToEditDriver() {
+    private static void fromPackageGoToEditDriver() throws NoSuchElementException {
 
         WebElement driverHref = driver.findElement(By.xpath("/html/body/div[1]/div[4]/div[1]/div/div[2]/div/table/tbody/tr/td[3]/a"));
         driverHref.click();
@@ -73,7 +74,7 @@ public class ReturnIssueService {
     }
 
 
-    private static boolean switchDriverAutoAccept(AutoAcceptMode switchTo) {
+    private static boolean switchDriverAutoAccept(AutoAcceptMode switchTo) throws NoSuchElementException {
 
         /*
         If driver is OFF:
@@ -114,7 +115,7 @@ public class ReturnIssueService {
     }
 
 
-    private static void createReturnJob(String reason) {
+    private static void createReturnJob(String reason) throws NoSuchElementException {
 
         WebElement packageReturnButton = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div/span[6]/a"));
         packageReturnButton.click();
@@ -124,7 +125,7 @@ public class ReturnIssueService {
 
         // SAFE MODE OFF - will issue a return
         WebElement issueReturnButton = driver.findElement(By.name("commit"));
-        issueReturnButton.click();
+       // issueReturnButton.click();
 
         // SAFE MODE ON - for testing
         //driver.navigate().back();

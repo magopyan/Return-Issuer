@@ -92,7 +92,7 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <Button layoutX="167.0" layoutY="415.0" mnemonicParsing="false" onAction="#onReturn" text="Return Package">
+            <Button defaultButton="true" layoutX="167.0" layoutY="415.0" mnemonicParsing="false" onAction="#onReturn" text="Return Package">
                <font>
                   <Font size="30.0" />
                </font>
