@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="580.0" style="-fx-background-color: #ffe8e8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReturnController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="492.0" style="-fx-background-color: #ffe8e8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReturnController">
    <top>
-      <AnchorPane prefHeight="64.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="55.0" prefWidth="512.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="171.0" layoutY="6.0" style="-fx-alignment: center;" text="Issue a Return">
+            <Label layoutX="146.0" layoutY="5.0" style="-fx-alignment: center;" text="Issue a Return">
                <font>
-                  <Font name="System Bold" size="36.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>
@@ -25,85 +25,84 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="8.0" layoutY="19.0" text="BO package URL:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="packageUrl" layoutX="160.0" layoutY="14.0" prefHeight="39.0" prefWidth="400.0">
+            <Label layoutX="10.0" layoutY="13.0" text="BO package URL:">
                <font>
                   <Font size="16.0" />
-               </font></TextField>
-            <RadioButton id="absent_customer" fx:id="rbAbsCust" layoutX="15.0" layoutY="150.0" mnemonicParsing="false" text="Absent Customer">
+               </font>
+            </Label>
+            <TextField fx:id="packageUrl" layoutX="140.0" layoutY="10.0" prefHeight="31.0" prefWidth="340.0" />
+            <RadioButton id="absent_customer" fx:id="rbAbsCust" layoutX="25.0" layoutY="110.0" mnemonicParsing="false" text="Absent Customer">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
                <toggleGroup>
                   <ToggleGroup fx:id="returnReasons" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton id="address_error" fx:id="rbAddrErr" layoutX="15.0" layoutY="200.0" mnemonicParsing="false" text="Address Error" toggleGroup="$returnReasons">
+            <RadioButton id="address_error" fx:id="rbAddrErr" layoutX="25.0" layoutY="150.0" mnemonicParsing="false" text="Address Error" toggleGroup="$returnReasons">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton id="cold_chain" fx:id="rbColdCh" layoutX="15.0" layoutY="350.0" mnemonicParsing="false" text="Cold Chain" toggleGroup="$returnReasons">
+            <RadioButton id="cold_chain" fx:id="rbColdCh" layoutX="25.0" layoutY="270.0" mnemonicParsing="false" text="Cold Chain" toggleGroup="$returnReasons">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton id="customer_refused_package" fx:id="rbCustRef" layoutX="240.0" layoutY="150.0" mnemonicParsing="false" text="Customer Refused Package" toggleGroup="$returnReasons">
+            <RadioButton id="customer_refused_package" fx:id="rbCustRef" layoutX="220.0" layoutY="110.0" mnemonicParsing="false" text="Customer Refused Package" toggleGroup="$returnReasons">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton id="cash_order_pos" fx:id="rbCash" layoutX="15.0" layoutY="250.0" mnemonicParsing="false" text="Cash Oder / POS" toggleGroup="$returnReasons">
+            <RadioButton id="cash_order_pos" fx:id="rbCash" layoutX="25.0" layoutY="190.0" mnemonicParsing="false" text="Cash Oder / POS" toggleGroup="$returnReasons">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton id="end_customer_underaged" fx:id="rbCustUnd" layoutX="240.0" layoutY="200.0" mnemonicParsing="false" text="End-Customer Underaged" toggleGroup="$returnReasons">
+            <RadioButton id="end_customer_underaged" fx:id="rbCustUnd" layoutX="220.0" layoutY="150.0" mnemonicParsing="false" text="End-Customer Underaged" toggleGroup="$returnReasons">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton id="client_request" fx:id="rbClReq" layoutX="15.0" layoutY="300.0" mnemonicParsing="false" text="Client Request" toggleGroup="$returnReasons">
+            <RadioButton id="client_request" fx:id="rbClReq" layoutX="25.0" layoutY="230.0" mnemonicParsing="false" text="Client Request" toggleGroup="$returnReasons">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton id="incorrect_package" fx:id="rbIncorrPack" layoutX="240.0" layoutY="250.0" mnemonicParsing="false" text="Incorrect Package" toggleGroup="$returnReasons">
+            <RadioButton id="incorrect_package" fx:id="rbIncorrPack" layoutX="220.0" layoutY="190.0" mnemonicParsing="false" text="Incorrect Package" toggleGroup="$returnReasons">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton id="package_damaged" fx:id="rbPackDam" layoutX="240.0" layoutY="300.0" mnemonicParsing="false" text="Package Damaged" toggleGroup="$returnReasons">
+            <RadioButton id="package_damaged" fx:id="rbPackDam" layoutX="220.0" layoutY="230.0" mnemonicParsing="false" text="Package Damaged" toggleGroup="$returnReasons">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton id="road_closed_unaccessible_area" fx:id="rbRdClosed" layoutX="240.0" layoutY="350.0" mnemonicParsing="false" text="Road Closed / Unaccessible Area" toggleGroup="$returnReasons">
+            <RadioButton id="road_closed_unaccessible_area" fx:id="rbRdClosed" layoutX="220.0" layoutY="270.0" mnemonicParsing="false" text="Road Closed / Unaccessible Area" toggleGroup="$returnReasons">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </RadioButton>
-            <Label layoutX="207.0" layoutY="92.0" text="Return Reason:">
+            <Label layoutX="173.0" layoutY="66.0" text="Return Reason:">
                <font>
-                  <Font size="25.0" />
+                  <Font size="22.0" />
                </font>
             </Label>
-            <Button layoutX="167.0" layoutY="415.0" mnemonicParsing="false" onAction="#onReturn" text="Return Package">
+            <Hyperlink layoutX="184.0" layoutY="377.0" onAction="#onEditLogin" text="Change login credentials" />
+            <Label fx:id="reasonErrorLabel" layoutX="130.0" layoutY="299.0" prefHeight="21.0" prefWidth="246.0" style="-fx-alignment: center;" textFill="RED">
                <font>
-                  <Font size="30.0" />
+                  <Font size="16.0" />
+               </font></Label>
+            <Label fx:id="urlErrorLabel" layoutX="140.0" layoutY="41.0" prefHeight="21.0" prefWidth="340.0" textFill="RED">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Button defaultButton="true" layoutX="163.0" layoutY="328.0" mnemonicParsing="false" onAction="#onReturn" text="Return Package">
+               <font>
+                  <Font size="22.0" />
                </font>
             </Button>
-            <Hyperlink layoutX="187.0" layoutY="480.0" onAction="#onEditLogin" text="Change login credentials">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Hyperlink>
-            <Label fx:id="reasonErrorLabel" layoutX="167.0" layoutY="380.0" prefHeight="21.0" prefWidth="246.0" style="-fx-alignment: center;" textFill="RED" />
-            <Label fx:id="urlErrorLabel" layoutX="160.0" layoutY="53.0" prefHeight="21.0" prefWidth="400.0" textFill="RED" />
          </children>
       </AnchorPane>
    </center>

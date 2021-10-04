@@ -125,7 +125,7 @@ public class ReturnIssueService {
 
         // SAFE MODE OFF - will issue a return
         WebElement issueReturnButton = driver.findElement(By.name("commit"));
-       // issueReturnButton.click();
+        issueReturnButton.click();
 
         // SAFE MODE ON - for testing
         //driver.navigate().back();

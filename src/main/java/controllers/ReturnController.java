@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriverException;
 import services.ReturnIssueService;
 import utils.FormOpener;
 import utils.FormValidator;
@@ -32,12 +33,12 @@ public class ReturnController implements Initializable {
 
     public void onReturn(ActionEvent event) {
 
-        ((Stage)((Button)event.getSource()).getScene().getWindow()).setIconified(true);
         urlErrorLabel.setText("");
         reasonErrorLabel.setText("");
 
         String url = packageUrl.getText(); // HAS TO BE BEFORE detectReason() because the latter calls clearFields and the url-""
         if(validateFields() == true) {
+            ((Stage)((Button)event.getSource()).getScene().getWindow()).setIconified(true);
             ReturnReason returnReason = detectReason();
             Package returnPackage = new Package(url, returnReason);
 
@@ -45,8 +46,14 @@ public class ReturnController implements Initializable {
             try {
                 successfulReturn = ReturnIssueService.issueReturn(returnPackage);
             }
-            catch (NoSuchElementException e) {
+            catch (NoSuchElementException nsee) {
                 FormOpener.openAlert("Failed return", "There is no option to return this package!");
+            }
+            catch (WebDriverException wde) {
+                FormOpener.openAlert("Webdriver outdated", "Your browser has updated, please contact the developer!");
+            }
+            catch (Exception e) {
+                FormOpener.openAlert("Error", e.getMessage() + "\r\n Please contact the developer!");
             }
         }
     }
