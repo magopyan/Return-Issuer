@@ -63,7 +63,6 @@ public class FormOpener {
 
     public static void openAlert() {
 
-
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("BO login failed");
         alert.setHeaderText("Unable to log into BackOffice, please enter the right credentials!");

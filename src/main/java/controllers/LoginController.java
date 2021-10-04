@@ -55,6 +55,15 @@ public class LoginController implements Initializable {
         return false;
     }
 
+
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        String email = BackOfficeUser.getBOUserInstance().getEmail();
+        String password = BackOfficeUser.getBOUserInstance().getPassword();
+        if(email != null && password != null) {
+            emailField.setText(email);
+            passwordField.setText(password);
+        }
+    }
 }

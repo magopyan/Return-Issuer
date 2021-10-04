@@ -9,7 +9,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        FormOpener.openNewForm("/login_page.fxml", "Return Issuer | Log In");
+        FormOpener.openNewForm("/login_page.fxml", "Log In");
     }
 
     public static void main(String[] args) {

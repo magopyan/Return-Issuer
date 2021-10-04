@@ -11,8 +11,8 @@ public class Package {
 
     public Package() {}
 
-    public Package(String url, ReturnReason returnReason) {
-        this.packageUrl = url;
+    public Package(String packageUrl, ReturnReason returnReason) {
+        this.packageUrl = packageUrl;
         this.returnReason = reasonIDCore.concat(String.valueOf(returnReason));
     }
 
