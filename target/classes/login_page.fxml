@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.0" prefWidth="539.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.0" prefWidth="539.0" style="-fx-background-color: #2ca0db;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <top>
       <AnchorPane prefHeight="64.0" prefWidth="539.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="131.0" layoutY="12.0" prefHeight="41.0" prefWidth="278.0" style="-fx-alignment: center;" text="BackOffice Login">
+            <Label layoutX="131.0" layoutY="7.0" prefHeight="41.0" prefWidth="278.0" style="-fx-alignment: center;" text="BackOffice Login">
                <font>
-                  <Font name="Tw Cen MT" size="34.0" />
+                  <Font name="System Bold" size="34.0" />
                </font>
             </Label>
          </children>
@@ -38,9 +38,9 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="25.0" layoutY="17.0" text="Email:">
+                        <Label layoutX="25.0" layoutY="18.0" text="Email:">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
                         <TextField fx:id="emailField" layoutX="120.0" layoutY="11.0" prefHeight="40.0" prefWidth="395.0">
@@ -52,9 +52,9 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Label layoutX="25.0" layoutY="14.0" text="Password:">
+                        <Label layoutX="25.0" layoutY="17.0" text="Password:">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
                         <PasswordField fx:id="passwordField" layoutX="120.0" layoutY="10.0" prefHeight="40.0" prefWidth="395.0">

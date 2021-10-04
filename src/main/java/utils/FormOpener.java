@@ -6,8 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Dialog;
-import javafx.stage.Modality;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class FormOpener {
@@ -23,6 +22,7 @@ public class FormOpener {
             stage.setTitle(title);
             stage.setScene(new Scene(root));
             stage.setResizable(false);
+            stage.getIcons().add(new Image("/icon.png"));
             stage.show();
 
         } catch (Exception e) {
@@ -43,6 +43,7 @@ public class FormOpener {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.getIcons().add(new Image("/icon.png"));
             stage.setIconified(background);
             stage.show();
 

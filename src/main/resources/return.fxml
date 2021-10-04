@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReturnController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="580.0" style="-fx-background-color: #ffe8e8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReturnController">
    <top>
       <AnchorPane prefHeight="64.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="193.0" layoutY="12.0" style="-fx-alignment: center;" text="Issue a Return">
+            <Label layoutX="171.0" layoutY="6.0" style="-fx-alignment: center;" text="Issue a Return">
                <font>
-                  <Font name="Tw Cen MT" size="36.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Label>
          </children>
@@ -25,7 +25,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="12.0" layoutY="19.0" text="BO package url:">
+            <Label layoutX="8.0" layoutY="19.0" text="BO package URL:">
                <font>
                   <Font size="20.0" />
                </font>
@@ -97,7 +97,7 @@
                   <Font size="30.0" />
                </font>
             </Button>
-            <Hyperlink layoutX="186.0" layoutY="480.0" onAction="#onEditLogin" text="Change login credentials">
+            <Hyperlink layoutX="187.0" layoutY="480.0" onAction="#onEditLogin" text="Change login credentials">
                <font>
                   <Font size="18.0" />
                </font>
