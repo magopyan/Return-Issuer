@@ -12,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 import utils.FormOpener;
 
+import java.io.File;
+
 public class ReturnIssueService {
 
 
@@ -19,10 +21,16 @@ public class ReturnIssueService {
 
     static {  // set up ChromeDriver, executes only once
 
-        System.setProperty("webdriver.chrome.driver", "D:\\Return_Issuer\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
+        try {
+            String directory = System.getProperty("user.dir") + File.separator + "chromedriver.exe";
+            System.setProperty("webdriver.chrome.driver", directory);
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless");
+            driver = new ChromeDriver(options);
+        }
+        catch (Exception e) {
+            FormOpener.openAlert("Error", e.getMessage() + "\r\n Please contact the developer!");
+        }
     }
 
     // Main Method combining all the other methods in this class
