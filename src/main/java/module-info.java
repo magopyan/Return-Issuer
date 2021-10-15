@@ -2,6 +2,7 @@ module JavaFxApplication {
     requires javafx.controls;
     requires javafx.fxml;
     requires commons.validator;
+    requires org.apache.commons.lang3;
     opens sample to javafx.fxml;
     exports sample;
     exports utils;

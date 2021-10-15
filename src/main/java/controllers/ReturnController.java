@@ -29,6 +29,8 @@ public class ReturnController implements Initializable {
     private Label urlErrorLabel;
     @FXML
     private Label reasonErrorLabel;
+    @FXML
+    private Label timerLabel;
 
 
     public void onReturn(ActionEvent event) {
@@ -42,15 +44,15 @@ public class ReturnController implements Initializable {
             ReturnReason returnReason = detectReason();
             Package returnPackage = new Package(url, returnReason);
 
-            boolean successfulReturn = false;
             try {
-                successfulReturn = ReturnIssueService.issueReturn(returnPackage);
+                String time = ReturnIssueService.issueReturn(returnPackage);
+                timerLabel.setText(time);
             }
             catch (NoSuchElementException nsee) {
                 FormOpener.openAlert("Failed return", "There is no option to return this package!");
             }
             catch (WebDriverException wde) {
-                FormOpener.openAlert("Webdriver outdated", "Your browser has updated, please contact the developer!");
+                FormOpener.openAlert("Webdriver outdated", "Your browser has likely updated, please contact the developer!");
             }
             catch (Exception e) {
                 FormOpener.openAlert("Error", e.getMessage() + "\r\n Please contact the developer!");
@@ -75,8 +77,6 @@ public class ReturnController implements Initializable {
         if(reasonSelected == false)
             reasonErrorLabel.setText("Please select a reason!");
         return false;
-
-
     }
 
     private ReturnReason detectReason() {
@@ -93,6 +93,7 @@ public class ReturnController implements Initializable {
 
         packageUrl.clear();
         selectedReason.setSelected(false);
+        timerLabel.setText("");
     }
 
     public void onEditLogin(ActionEvent event) throws IOException {
