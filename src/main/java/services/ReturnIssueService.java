@@ -178,7 +178,7 @@ public class ReturnIssueService {
         try{
             WebElement deliveriesTable = webDriver.findElement(By.xpath("/html/body/div[1]/div[4]/div[1]/div/div[3]/div/table/tbody"));
             List<WebElement> rows = deliveriesTable.findElements(By.tagName("tr"));
-            WebElement returnPickupRow = rows.get(rows.size() - 1);
+            WebElement returnPickupRow = rows.get(rows.size() - 2);
 
             WebElement markAsPickedButton = returnPickupRow.findElement(By.id("task_modal_link"));
             markAsPickedButton.click();
@@ -187,6 +187,8 @@ public class ReturnIssueService {
             WebElement doneButton = webDriver.findElement(By.name("commit"));
             doneButton.click();
         }
-        catch (Exception e) { }
+        catch (Exception e) {
+            FormOpener.openAlert("Error", e.getMessage() + "\r\n Please contact the developer!");
+        }
     }
 }
